@@ -1,0 +1,5 @@
+CREATE TABLE PATIENT (
+    id SERIAL,
+
+    PRIMARY KEY (id)
+)
