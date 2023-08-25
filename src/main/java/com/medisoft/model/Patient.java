@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -16,6 +17,7 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @NotEmpty
@@ -80,6 +82,11 @@ public class Patient {
     @Size(min = 3,max = 30)
     @Column(name = "GENERAL_PRACTITIONER")
     private String generalPractitioner;
+
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID", nullable = false)
+    public Set<Address> addresses;
 
     //todo
 //    ADDRESS_ID NUMBER,
