@@ -1,5 +1,6 @@
 package com.medisoft.service;
 
+import com.medisoft.model.Address;
 import com.medisoft.model.Patient;
 import com.medisoft.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,17 @@ public class PatientService {
     }
 
     public void create(Patient patient) {
+        var adr = new Address();
+
+        adr.setCity("Varna");
+        adr.setLine("Nayden Gerov 6");
+        adr.setCounty("Varna");
+        adr.setPostalCode("9000");
+        adr.setCountry("Bulgaria");
+
+        patient.setAddress(adr);
+
         patientRepository.save(patient);
     }
+
 }
