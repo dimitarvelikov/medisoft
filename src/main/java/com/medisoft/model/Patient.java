@@ -36,7 +36,7 @@ public class Patient {
     @Column(name = "F_NAME")
     private String firstName;
 
-    @NotEmpty
+    //   @NotEmpty
     @Size(min = 3, max = 30)
     @Column(name = "M_NAME")
     private String middleName;
@@ -51,44 +51,43 @@ public class Patient {
     @Column(name = "BIRTHDATE")
     private LocalDate dateOfBirth;
 
-    @NotEmpty
-    @Size(min = 3, max = 40)
+    //@NotEmpty
+    //@Size(min = 3, max = 40)
     @Column(name = "EMAIL")
-    // todo email regex https://www.baeldung.com/java-email-validation-regex
-    @Email(regexp = ".+[@].+[\\.].+")
+    @Email(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 
-    @NotEmpty
-    @Size(min = 1, max = 1)
+    //@NotEmpty
+    //@Size(min = 1, max = 1)
     @Column(name = "GENDER")
     private String gender;
 
-    @NotEmpty
-    @Size(min = 3, max = 40)
+    //@NotEmpty
+    //@Size(min = 3, max = 40)
     @Column(name = "NATIONALITY")
     private String nationality;
 
-    @NotEmpty
-    @Size(min = 3, max = 40)
+    //@NotEmpty
+    //@Size(min = 3, max = 40)
     @Column(name = "PHONE")
     private String phoneNumber;
 
-    @NotNull
+    //@NotNull
     @Column(name = "ACTIVE")
     private boolean active;
 
-    @NotEmpty
-    @Size(min = 3, max = 30)
+    //@NotEmpty
+    //@Size(min = 3, max = 30)
     @Column(name = "SOCIAL_GROUP")
     private String socialGroup;
 
-    @NotEmpty
-    @Size(min = 3, max = 30)
+    //   @NotEmpty
+    //   @Size(min = 3, max = 30)
     @Column(name = "MARITAL_STATUS")
     private String maritalStatus;
 
-    @NotEmpty
-    @Size(min = 3, max = 30)
+    //  @NotEmpty
+    //  @Size(min = 3, max = 30)
     @Column(name = "GENERAL_PRACTITIONER")
     private String generalPractitioner;
 
