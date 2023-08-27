@@ -1,13 +1,20 @@
 package com.medisoft.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import java.util.Date;
-import java.util.Set;
+
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -17,79 +24,77 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "EGN")
+    @NotNull
+    private String egn;
+
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "F_NAME")
     private String firstName;
 
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "M_NAME")
     private String middleName;
 
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "L_NAME")
     private String lastName;
 
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
-    private Date dateOfBirth;
+    @Column(name = "BIRTHDATE")
+    private LocalDate dateOfBirth;
 
     @NotEmpty
-    @Size(min = 3,max = 40)
+    @Size(min = 3, max = 40)
     @Column(name = "EMAIL")
+    // todo email regex https://www.baeldung.com/java-email-validation-regex
     @Email(regexp = ".+[@].+[\\.].+")
     private String email;
 
     @NotEmpty
+    @Size(min = 1, max = 1)
     @Column(name = "GENDER")
-    private Character gender;
+    private String gender;
 
     @NotEmpty
-    @Size(min = 3,max = 40)
+    @Size(min = 3, max = 40)
     @Column(name = "NATIONALITY")
     private String nationality;
 
-    //https://www.baeldung.com/java-libphonenumber
-    //https://github.com/google/libphonenumber
-    //todo check the library for important phone validations and to discuss with Velikov abouth the telephone
-
     @NotEmpty
-    @Size(min = 3,max = 40)
-    @Column(name = "TELEPHONE")
-    private String telephone;
+    @Size(min = 3, max = 40)
+    @Column(name = "PHONE")
+    private String phoneNumber;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "ACTIVE")
-    private Boolean active;
+    private boolean active;
 
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "SOCIAL_GROUP")
     private String socialGroup;
 
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "MARITAL_STATUS")
     private String maritalStatus;
 
     @NotEmpty
-    @Size(min = 3,max = 30)
+    @Size(min = 3, max = 30)
     @Column(name = "GENERAL_PRACTITIONER")
     private String generalPractitioner;
 
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID", nullable = false)
-    public Set<Address> addresses;
-
-    //todo
-//    ADDRESS_ID NUMBER,
-//    CONTACT_PERSON_ID NUMBER
+    // @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // @JoinColumn(name = "ID", nullable = false)
+    // public List<Address> addresses;
 
 }
