@@ -6,3 +6,6 @@ spring:
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5432/medisoft
+
+logging.pattern.console: '%d{yy-MM-dd HH:mm:ss} request=%X{REQUEST_ID} %-5level %logger{36} %msg%n'
+logging.level.root: DEBUG
