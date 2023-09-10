@@ -9,3 +9,7 @@ spring:
 
 logging.pattern.console: '%d{yy-MM-dd HH:mm:ss} request=%X{REQUEST_ID} %-5level %logger{36} %msg%n'
 logging.level.root: DEBUG
+
+nzis:
+  api-url: https://ptest-api.his.bg
+  auth-url: https://ptest-auth.his.bg
