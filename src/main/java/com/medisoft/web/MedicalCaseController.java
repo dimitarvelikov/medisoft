@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/medical-case")
+@RequestMapping("/api/medical-case")
 public class MedicalCaseController {
 
     private final MedicalCaseService medicalCaseService;
